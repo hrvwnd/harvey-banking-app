@@ -6,31 +6,42 @@ def frontend():
     print ("3. Withdraw")
     print ("4. Show Account Details")
     print ("5. Exit")
-    user_input = input("Please enter your choice")
+    user_input = input("Please enter your choice: ")
     user_choice(user_input)
 
 
 def user_choice(choice):
-    if choice in ["1","Create Account","create account"]:
-        create_account()
-    elif choice in ["2", "Deposit", "deposit"]:
-        deposit()
-    elif choice in ["3","Withdraw","withdraw"]:
-        withdraw()
-    elif choice in ["4","Show Account Details","show account details",
-                    "Account Details","account details"]:
-        account_details()
-    elif choice in ["5","Exit","exit"]:
-        user_exit()
+    while True:
+        if choice in ["1","Create Account","create account"]:
+            create_account()
+        elif choice in ["2", "Deposit", "deposit"]:
+            deposit()
+        elif choice in ["3","Withdraw","withdraw"]:
+            withdraw()
+        elif choice in ["4","Show Account Details","show account details",
+                        "Account Details","account details"]:
+            account_details()
+        elif choice in ["5","Exit","exit"]:
+            user_exit()
+        else:
+            import time
+            print ("Wrong input, please try again")
+            time.sleep(1)
+            frontend()
+
 
 def create_account():
-    email_address = input("Please enter your email address")
+    email_address = input("Please enter your email address: ")
     #change this - check database for email
-    first_name = input("Please enter your first name")
-    surname = input("Please enter your suranme")
-    date_of_birth = input ("Please enter your date of birth in dd/mm/yy")
+    first_name = input("Please enter your first name: ")
+    surname = input("Please enter your suranme: ")
+    date_of_birth = input ("Please enter your date of birth in dd/mm/yy: ")
+    address = input("Please enter your adddress: ")
+    postcode = input("Please enter your postcode: ")
     password = create_password()
-    pass
+
+
+
 def deposit():
     pass
 def withdraw():
@@ -40,7 +51,7 @@ def account_details():
 def user_exit():
     pass
 
-create_password():
+def create_password():
     import getpass
     
 class BankAccount():
