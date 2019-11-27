@@ -30,16 +30,37 @@ def user_choice(choice):
             frontend()
 
 
+
+"""
+#Testing purposes 
+first_name = "blah"
+surname = "blahson"
+address = "blahburry way"
+email_address = "blahblahson@email.com"
+password = "password"
+sql_string = '("'+first_name+ '","' + surname + '","' + address + '","' +email_address + '","' + password + '")'
+print (sql_string)
+from connect_to_sql import write 
+write(sql_string)
+"""
+
+
 def create_account():
+    # takes user inputs and formats them in sql syntax
     email_address = input("Please enter your email address: ")
     #change this - check database for email
     first_name = input("Please enter your first name: ")
     surname = input("Please enter your suranme: ")
     date_of_birth = input ("Please enter your date of birth in dd/mm/yy: ")
     address = input("Please enter your adddress: ")
-    postcode = input("Please enter your postcode: ")
+    #postcode = input("Please enter your postcode: ")
     password = create_password()
-
+    sql_string = '("'+first_name+ '","' + surname + '","' + address + '","' +email_address + '","' + password + '")"'
+    print (sql_string)
+    from connect_to_sql import write
+    write(sql_string)
+    user_information = [first_name,surname,address,email_address,password]
+    return user_information
 
 
 def deposit():
@@ -53,7 +74,12 @@ def user_exit():
 
 def create_password():
     import getpass
-    
+    try:
+        password = getpass.getpass("Password: ")
+    except Exception as error:
+        print("ERROR",error)
+    return password
+
 class BankAccount():
     _money = 0
 
@@ -78,7 +104,8 @@ def password_authenticate():
     else:
         print ("Incorrect Password")
     
-#look into getpass (import getpass)
-    
+
+"""
 if __name__ == "__main__":
     frontend()
+"""
